@@ -1,0 +1,33 @@
+---
+const pages = [
+  {
+    slug: 'projects',
+    title: 'Astro Store',
+    text: 'Welcome to the Astro store!',
+  },
+  {
+    slug: 'about-me',
+    title: 'Astro products',
+    text: 'We have lots of products for you',
+  },
+  {
+    slug: 'blog',
+    title: 'The ultimate Astro handbook',
+    text: 'If you want to learn Astro, you must read this book.',
+  }
+];
+
+const { page } = Astro.params;
+const page0 = pages.find((data) => data.slug === page);
+if (!page0) return Astro.redirect("/404");
+const { title, text } = page0;
+---
+<html>
+  <head>
+    <title>{title}</title>
+  </head>
+  <body>
+    <h1>{title}</h1>
+    <p>{text}</p>
+  </body>
+</html>
